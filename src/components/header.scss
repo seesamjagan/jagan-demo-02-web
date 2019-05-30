@@ -1,0 +1,31 @@
+.header {
+    height: 64px;
+    margin-bottom: 64px;
+    overflow-y: visible;
+    background-color: #336699;
+
+  .profile-picture {
+    background-image: url("/assets/images/profile picture.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    border-radius: 128px;
+    overflow: hidden;
+    margin-left: 16px;
+    box-shadow: 0 0px 4px 2px hsla(0, 0, 0, 0.6);
+  }
+
+  h2 {
+      padding-left: calc(128px + 16px + 8px);
+      &.name{
+          margin-top: calc(-98px);
+          color: #FFF;
+      }
+      &.title{
+        margin-top: 0px;
+        color: #369;
+    }
+  }
+}

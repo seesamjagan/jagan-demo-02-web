@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "result": {
+    "apiKey": "AIzaSyBkqXOL0evTDYRizek8j8aqE_KkE9Izaw0",
+    "databaseURL": "https://jagan-demo-02.firebaseio.com",
+    "storageBucket": "jagan-demo-02.appspot.com",
+    "authDomain": "jagan-demo-02.firebaseapp.com",
+    "messagingSenderId": "980161509854",
+    "projectId": "jagan-demo-02",
+    "appId": "1:980161509854:web:f96fe50488482979"
+  }
+}

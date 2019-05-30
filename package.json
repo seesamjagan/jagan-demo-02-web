@@ -1,0 +1,41 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "web app for jagan-demo-02 firebase project",
+  "main": "index.js",
+  "author": "jagan langa",
+  "license": "MIT",
+  "private": true,
+  "proxy": "https://jagan-demo-02.web.app/",
+  "dependencies": {
+    "firebase": "^6.0.4",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-firebaseui": "^3.1.2",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^3.0.1",
+    "redux": "^4.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "predeploy": "react-scripts build",
+    "deploy": "firebase deploy",
+    "createfirebaseconf": "firebase setup:web --json > ./src/firebase-config.json"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

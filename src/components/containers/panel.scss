@@ -1,0 +1,64 @@
+@import "./../../styles/colors";
+
+.panel {
+  background: white;
+  background: radial-gradient(circle, #039be5, #01579b);
+  padding: 8px;
+  border-radius: 3px;
+  margin: 0 auto 4px;
+  overflow: auto;
+  & > section {
+    background-color: $PRIMARY_BG_COLOR;
+    border-radius: 2px;
+    padding: 4px;
+
+    p img {
+      max-width: 200px;
+    }
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  h2 {
+    color: $SECONDARY_COLOR;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  p {
+    line-height: 140%;
+    font-size: 14px;
+  }
+  a {
+    display: inline-block;
+    text-align: center;
+    background: $PRIMARY_COLOR;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+  }
+  &,
+  a {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  &.card {
+    background: unset;
+    margin: 8px auto;
+    h2 {
+      color: $PRIMARY_COLOR;
+    }
+    section {
+      display: flex;
+      flex-direction: row;
+      align-content: space-between;
+    }
+  }
+}
