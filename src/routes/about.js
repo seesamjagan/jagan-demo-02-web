@@ -3,7 +3,7 @@ import Panel from '../components/containers/panel';
 
 export default function About(props) {
     return (
-        <Panel title="About" className="card h100">
+        <Panel title="About" className="card" titleId="about">
             <p>
                 <img src="./assets/images/male-silhoutte-02.png" alt="about" />
             </p>

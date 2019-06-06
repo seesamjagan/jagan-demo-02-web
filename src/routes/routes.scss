@@ -1,0 +1,21 @@
+@import "./../styles/colors";
+
+.panel {
+  &.card {
+    background: unset;
+    margin: 8px 4px;
+    .panel-body {
+        background-color: #FFF;
+    }
+    p {
+        img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+        }
+    }
+    h2 {
+      color: $PRIMARY_COLOR;
+    }
+  }
+}

@@ -55,7 +55,7 @@ export class ExperienceUI extends React.Component {
     } = this;
 
     return (
-      <Panel title="Experience" className="card h100 auto-scroll">
+      <Panel title="Experience" className="card" titleId="experience">
         <p>
           <img src="./assets/images/LearningPath.png" alt="experience" />
         </p>

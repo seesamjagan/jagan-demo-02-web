@@ -13,12 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
  .app {
   max-width: 779px;
-  margin: 0px auto 16px;
-  height: 100%;;
+  margin: 0px auto;
+  height: 100%;
+  .app-body {
+    height: calc(100% - 128px - 32px - 32px);
+    overflow: auto;
+  }
  }
+
 /*
  .container {
     position: fixed;

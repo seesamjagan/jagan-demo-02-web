@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { firebaseApp, features } from "./../firebase/app";
 
 import "./app.scss";
-import Education from "../routes/education";
+import "./../routes/routes.scss";
+
+import Educations from "../routes/education";
 import Projects from "../routes/projects";
 import Experience from "../routes/experience";
 import About from "../routes/about";
 import Header from "./header";
-import NavBar from "./nav-bar";
 import Awards from "../routes/awards";
 import Footer from "./footer";
 
@@ -45,22 +46,18 @@ export default class App extends Component {
       <Router>
         <div className="app">
           <Header />
-          <NavBar />
-          <Switch>
-            <Route path="/" component={About} exact />
-            <Route path="/about" component={About} exact />
-            <Route path="/experience" component={Experience} />
-            <Route path="/projects" component={Projects} />
-            <Route path="/education" component={Education} />
-            <Route path="/awards" component={Awards} />
-          </Switch>
+          <section className="app-body">
+          <About />
+          <Experience />
+          <Projects />
+          <Educations />
+          <Awards />
+          </section>
           <Footer features={features} />
         </div>
       </Router>
     );
   }
-}
-
 /**
  * 
  * 

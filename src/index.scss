@@ -1,5 +1,4 @@
 @import "./styles/colors";
-
 html,
 body {
   background: $PRIMARY_BG_COLOR;
@@ -26,6 +25,7 @@ body,
 
 * {
   box-sizing: border-box;
+  position: relative;
 }
 
 .h100 {
@@ -38,8 +38,7 @@ body,
 
 @media (max-width: 600px) {
   body {
-    margin-top: 0;
-    background: white;
-    border-top: 16px solid $SECONDARY_COLOR;
+    margin-top: 0;/* 
+    border-top: 16px solid $SECONDARY_COLOR; */
   }
 }
