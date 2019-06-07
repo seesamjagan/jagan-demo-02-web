@@ -1,9 +1,9 @@
+@import "./colors";
 .header {
   height: 64px;
   margin-bottom: 64px;
   overflow-y: visible;
   background-color: #336699;
-
   .profile-picture {
     background-image: url("/assets/images/profile picture.png");
     background-size: contain;
@@ -28,26 +28,49 @@
       font-size: 1.2em;
     }
   }
+  .action-icon {
+    float: right;
+    margin-top: -48px;
+    margin-right: 4px;
+    .action {
+      cursor: pointer;
+      color: #FFF;
+      margin: 2px;
+    }
+    .action:hover {
+      color: $SECONDARY_COLOR;
+    }
+  }
 }
 
 @media (max-width: 600px) {
   .header {
     height: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 4px;
+    display: flex;
     .profile-picture {
-      width: 64px;
-      height: 64px;
-      border-radius: 64px;
+      border-radius: 32px;
+      width: 32px;
+      height: 32px;
     }
     h2 {
-      font-size: 20px;
-      margin-left: calc(64px + 8px + 8px);
       &.name {
-        margin-top: calc(-60px);
+        font-size: 16px;
+        color: #fff;
+        padding: 4px;
+        margin: 0;
       }
       &.title {
-        font-size: 18px;
+        font-size: 16px;
+        color: #fff;
+        padding: 4px;
+        margin: 0;
+        font-weight: normal;
       }
+    }
+    .action-icon {
+      margin-top: 0;
+      margin-right: 0;
     }
   }
 }
