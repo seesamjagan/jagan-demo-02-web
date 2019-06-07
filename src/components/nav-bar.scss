@@ -17,3 +17,13 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .app-nav-bar {
+    a {
+      font: {
+        size: small;
+      }
+    }
+  }
+}
