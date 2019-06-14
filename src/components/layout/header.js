@@ -25,7 +25,7 @@ export const Header = ({ auth }) => {
   return (
     <>
       <header className="header">
-        <a href="/" className="profile-picture" />
+        <a href="/" className="profile-picture">Jagan Langa</a>
         <h2 className="name">Jagan Langa</h2>
         <h2 className="title">Technical Architect</h2>
         <div className="action-icon">
@@ -76,8 +76,8 @@ class LoginModal extends Component {
   };
   onSignInError = error => {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    //var errorCode = error.code;
+    //var errorMessage = error.message;
     // ...
     console.error(error);
   };

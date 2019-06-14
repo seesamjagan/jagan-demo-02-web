@@ -40,7 +40,7 @@ export class ExperienceUI extends React.Component {
           error: reason
         });
       })
-      .finally(() => {
+      .then(() => {
         this.setState({
           loading: false
         });
@@ -48,7 +48,7 @@ export class ExperienceUI extends React.Component {
   };
   render() {
     const {
-      state: { error, loading },
+      state: { loading },
       props: {
         experience: { data }
       }
