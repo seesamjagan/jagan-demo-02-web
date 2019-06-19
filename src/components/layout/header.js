@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import "./header.scss";
 import NavBar from "./nav-bar";
 import { Icon } from "../utils";
@@ -22,10 +22,31 @@ const signOut = () => {
 
 export const Header = ({ auth }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showEmailVerificationModal, setShowEmailVerificationModal] = useState(
+    false
+  );
+
+  useEffect(() => {
+    setShowEmailVerificationModal(auth ? !auth.emailVerified : false);
+    return () => {
+      console.log("Header unmounted");
+    };
+  }, [auth]);
+/* 
+  if (auth) {
+    console.log(auth.toJSON());
+  }
+  console.log({
+    showEmailVerificationModal,
+    emailVerified: auth ? auth.emailVerified : "--"
+  });
+   */
   return (
     <>
       <header className="header">
-        <a href="/" className="profile-picture">Jagan Langa</a>
+        <a href="/" className="profile-picture">
+          Jagan Langa
+        </a>
         <h2 className="name">Jagan Langa</h2>
         <h2 className="title">Technical Architect</h2>
         <div className="action-icon">
@@ -54,11 +75,55 @@ export const Header = ({ auth }) => {
         show={showLoginModal}
         onClose={() => setShowLoginModal(false)}
       />
+      <VerifyEmailModal
+        show={showEmailVerificationModal}
+        onClose={() => setShowEmailVerificationModal(false)}
+      />
     </>
   );
 };
 
 export default Header;
+
+class VerifyEmailModal extends Component {
+  onSend = () => {
+    firebase
+      .auth()
+      .currentUser.sendEmailVerification()
+      .then((...params) => {
+        console.log("onVerifyEmail", ...params);
+      })
+      .catch(err => {
+        console.log("onVerifyEmail", err);
+      })
+      .finally(() => {
+        let { onClose } = this.props;
+        onClose && onClose();
+      });
+  };
+
+  onSendLater = () => {
+    let { onClose } = this.props;
+    onClose && onClose();
+  };
+
+  render() {
+    let { show } = this.props;
+
+    return (
+      <Popup title="Verify Email" show={show}>
+        <p>
+          Seems you have not yet verified your email. Do you like us to re-send
+          the verification email?{" "}
+        </p>
+        <div>
+          <button onClick={this.onSend}>Send</button>
+          <button onClick={this.onSendLater}>Later</button>
+        </div>
+      </Popup>
+    );
+  }
+}
 
 class LoginModal extends Component {
   onLoginClick = () => {
