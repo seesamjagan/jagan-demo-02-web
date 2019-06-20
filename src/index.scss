@@ -36,6 +36,37 @@ body,
   overflow: auto;
 }
 
+.form {
+  .form-item {
+    margin: 4px 0;
+    label {
+      display: inline-block;
+      min-width: 40%;
+      font: {
+        size: small;
+        weight: bold;
+      }
+    }
+    input {
+      min-width: 60%;
+      border-style: solid;
+      border-width: thin;
+      border-color: #369;
+      padding: 4px;
+    }
+    &.footer {
+      border-top: solid thin #369;
+      text-align: right;
+      button {
+        margin: 4px 4px 0;
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+
+
 @media (max-width: 600px) {
   body {
     margin-top: 0;/* 

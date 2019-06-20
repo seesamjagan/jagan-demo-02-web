@@ -40,7 +40,7 @@ export class ExperienceUI extends React.Component {
           error: reason
         });
       })
-      .then(() => {
+      .finally(() => {
         this.setState({
           loading: false
         });

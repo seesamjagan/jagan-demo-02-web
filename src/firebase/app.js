@@ -8,6 +8,8 @@ import "firebase/messaging";
 import "firebase/storage";
 import "firebase/firestore";
 
+//import { Timestamp } from "firebase/firestore";
+
 // Instantiate a Firebase app.
 const firebaseConfig = {
   apiKey: "AIzaSyBkqXOL0evTDYRizek8j8aqE_KkE9Izaw0",
@@ -25,3 +27,12 @@ export const db = firebase.firestore();
 
 //let app = firebase.app();
 export const features = ['auth', 'database', 'firestore', 'messaging', 'storage'].filter(feature => typeof firebaseApp[feature] === 'function');
+/*
+console.log(firebase.firestore.Timestamp.now())
+
+db.collection("users").get().then(qss => {
+  qss.forEach(user=> {
+    console.log(user.data(), user);
+  });
+});
+*/

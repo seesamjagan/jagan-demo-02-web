@@ -5,17 +5,26 @@
     background: unset;
     margin: 8px 4px;
     .panel-body {
-        background-color: #FFF;
+      background-color: #fff;
     }
     p {
-        img {
-            width: 100%;
-            max-height: 100px;
-            object-fit: contain;
-        }
+      img {
+        width: 100%;
+        max-height: 100px;
+        object-fit: contain;
+      }
     }
-    h2 {
+
+    .panel-header {
       color: $PRIMARY_COLOR;
+      .icon {
+        margin: 0 4px;
+        flex: 1 1 0;
+      }
+      .title {
+        font-size: 18px;
+        font-weight: 500;
+      }
     }
   }
 }

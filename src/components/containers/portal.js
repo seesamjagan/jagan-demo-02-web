@@ -37,12 +37,29 @@ export class Modal extends React.Component {
 export class Popup extends React.Component {
   render() {
     let {
-      props: { title = "Popup", children, show }
+      props: {
+        title = "Popup",
+        children,
+        show,
+        showClose = true,
+        onClose,
+        icon,
+        iconFunction
+      }
     } = this;
     if (!show) return null;
     return (
       <Modal>
-        <Panel title={title} className="popup">{children}</Panel>
+        <Panel
+          title={title}
+          icon={icon}
+          iconFunction={iconFunction}
+          className="popup"
+          showClose={showClose}
+          onClose={onClose}
+        >
+          {children}
+        </Panel>
       </Modal>
     );
   }

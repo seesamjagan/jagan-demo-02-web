@@ -20,27 +20,60 @@ const signOut = () => {
     });
 };
 
+const AuthActions = ({ auth, setShowLoginModal, setShowSignUpModal }) => {
+  if (auth) {
+    return (
+      <>
+        <span className="action" title={auth.displayName}>
+          <Icon icon="user-circle-o" />
+        </span>
+        <span className="action" onClick={signOut} title="Sign out">
+          <Icon icon="sign-out" />
+        </span>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <span
+          className="action"
+          onClick={() => setShowSignUpModal(true)}
+          title="Sign up"
+        >
+          <Icon icon="user-plus" />
+        </span>
+        <span
+          className="action"
+          onClick={() => setShowLoginModal(true)}
+          title="Sign in"
+        >
+          <Icon icon="sign-in" />
+        </span>
+      </>
+    );
+  }
+};
+
 export const Header = ({ auth }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showEmailVerificationModal, setShowEmailVerificationModal] = useState(
     false
   );
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   useEffect(() => {
     setShowEmailVerificationModal(auth ? !auth.emailVerified : false);
+    // auth && console.log(auth.toJSON());
     return () => {
       console.log("Header unmounted");
     };
   }, [auth]);
-/* 
-  if (auth) {
-    console.log(auth.toJSON());
-  }
-  console.log({
-    showEmailVerificationModal,
-    emailVerified: auth ? auth.emailVerified : "--"
-  });
-   */
+
+  let authActionProps = {
+    auth,
+    setShowLoginModal,
+    setShowSignUpModal
+  };
   return (
     <>
       <header className="header">
@@ -50,24 +83,7 @@ export const Header = ({ auth }) => {
         <h2 className="name">Jagan Langa</h2>
         <h2 className="title">Technical Architect</h2>
         <div className="action-icon">
-          {auth ? (
-            <span className="action" title={auth.displayName}>
-              <Icon icon="user-circle-o" />
-            </span>
-          ) : null}
-          {auth ? (
-            <span className="action" onClick={signOut} title="Sign out">
-              <Icon icon="sign-out" />
-            </span>
-          ) : (
-            <span
-              className="action"
-              onClick={() => setShowLoginModal(true)}
-              title="Sign in"
-            >
-              <Icon icon="sign-in" />
-            </span>
-          )}
+          <AuthActions {...authActionProps} />
         </div>
       </header>
       <NavBar />
@@ -78,6 +94,10 @@ export const Header = ({ auth }) => {
       <VerifyEmailModal
         show={showEmailVerificationModal}
         onClose={() => setShowEmailVerificationModal(false)}
+      />
+      <SignUpModal
+        show={showSignUpModal}
+        onClose={() => setShowSignUpModal(false)}
       />
     </>
   );
@@ -111,7 +131,13 @@ class VerifyEmailModal extends Component {
     let { show } = this.props;
 
     return (
-      <Popup title="Verify Email" show={show}>
+      <Popup
+        title="Verify Email"
+        icon={<Icon icon="paper-plane" />}
+        show={show}
+        showClose
+        onClose={this.onSendLater}
+      >
         <p>
           Seems you have not yet verified your email. Do you like us to re-send
           the verification email?{" "}
@@ -162,22 +188,121 @@ class LoginModal extends Component {
     } = this;
 
     return (
-      <Popup title="sign-in" show={show}>
-        <input placeholder="username" onChange={this.onInptChange} id="email" />
-        <input
-          placeholder="password"
-          onChange={this.onInptChange}
-          id="password"
-          type="password"
-        />
-        <div>
-          <button onClick={onLoginClick}>sign in</button>
-          <button onClick={onClose}>cancel</button>
+      <Popup
+        title="sign-in"
+        icon={<Icon icon="sign-in" />}
+        show={show}
+        showClose
+        onClose={onClose}
+      >
+        <div className="form">
+          <div className="form-item">
+            <label>Email</label>
+            <input
+              placeholder="username"
+              onChange={this.onInptChange}
+              id="email"
+            />
+          </div>
+          <div className="form-item">
+            <label>Password</label>
+            <input
+              placeholder="password"
+              onChange={this.onInptChange}
+              id="password"
+              type="password"
+            />
+          </div>
+          <div className="form-item footer">
+            <button onClick={onLoginClick}>sign in</button>
+            <button onClick={onClose}>cancel</button>
+          </div>
         </div>
       </Popup>
     );
   }
 }
+
+const SignUpModal = ({ show, onClose }) => {
+  useEffect(() => {
+    show && document.querySelector("#displayName").focus();
+    return () => {
+      // TODO :: clean up
+    };
+  }, [show]);
+
+  const signUp = async () => {
+    let displayName = document.querySelector("#displayName").value;
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#password").value;
+    let confirmPassword = document.querySelector("#confirmPassword").value;
+    if (!email) {
+      alert("email is required");
+    } else if (!password) {
+      alert("password is required");
+    } else if (password !== confirmPassword) {
+      alert("password and confirm password is not same!");
+    } else {
+      try {
+        let {user} = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password);
+        await user.sendEmailVerification();
+        await user.updateProfile({
+          displayName: displayName || email
+        });
+        onClose();
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  };
+
+  return (
+    <Popup
+      title="sign-up"
+      icon={<Icon icon="user-plus" />}
+      show={show}
+      showClose
+      onClose={onClose}
+    >
+      <div className="form">
+        <div className="form-item">
+          <label htmlFor="displayName">Display Name</label>
+          <input
+            id="displayName"
+            type="text"
+            placeholder="eg. Jagan Langa S."
+          />
+        </div>
+        <div className="form-item">
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="eg. username@domain.com"
+          />
+        </div>
+        <div className="form-item">
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" placeholder="secret" />
+        </div>
+        <div className="form-item">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="repeat secret"
+          />
+        </div>
+        <div className="form-item footer">
+          <button onClick={signUp}>sign up</button>
+          <button onClick={onClose}>cancel</button>
+        </div>
+      </div>
+    </Popup>
+  );
+};
 
 const LoginModalUI = connect(
   mapStateToProps,
