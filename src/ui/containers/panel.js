@@ -1,9 +1,9 @@
 import React from "react";
 
 import "./panel.scss";
-import { Icon } from "../utils";
+import { Icons } from "../utils";
 
-const defaultIcon = <Icon icon="sticky-note" />;
+
 
 export default function Panel({
   children,
@@ -19,12 +19,12 @@ export default function Panel({
     <div className={["panel", className].join(" ")}>
       <header className="panel-header" id={titleId || title}>
         <span className="icon">
-          {icon ? icon : iconFunction ? iconFunction() : defaultIcon}
+          {icon ? icon : iconFunction ? iconFunction() : <Icons.Default />}
         </span>
         <h2 className="title">{title}</h2>
         {showClose && (
           <span className="icon close" onClick={onClose}>
-            <Icon icon="times-circle" />
+            <Icons.Close />
           </span>
         )}
       </header>

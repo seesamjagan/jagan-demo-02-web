@@ -1,24 +1,26 @@
 import React from "react";
 import "./nav-bar.scss";
-import { Icon } from "../utils";
+import { Icons } from "../utils";
+
+const { About, Experience, Projects, Education, Awards } = Icons;
 
 export default function NavBar() {
   return (
     <nav className="app-nav-bar">
       <a href="#about" to="#about">
-        <Icon icon="user-o" />About
+        <About />About
       </a>
       <a href="#experience" to="#experience">
-        <Icon icon="puzzle-piece" />Experience
+        <Experience />Experience
       </a>
       <a href="#projects" to="#projects">
-        <Icon icon="cube" />Projects
+        <Projects />Projects
       </a>
       <a href="#education" to="#education">
-        <Icon icon="graduation-cap" />Education
+        <Education />Education
       </a>
       <a href="#awards" to="#awards">
-        <Icon icon="certificate" />Awards
+        <Awards />Awards
       </a>
     </nav>
   );

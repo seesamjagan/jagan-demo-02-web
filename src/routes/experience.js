@@ -1,11 +1,12 @@
 import React from "react";
-import Panel from "../components/containers/panel";
+import Panel from "../ui/containers/panel";
 import { db } from "../firebase/app";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../store";
 import { updateExperienceAction } from "../store/reducers/experience";
 
 import "./experience.scss";
+import { Icons } from "../ui/utils";
 
 export class ExperienceUI extends React.Component {
   state = {
@@ -55,7 +56,7 @@ export class ExperienceUI extends React.Component {
     } = this;
 
     return (
-      <Panel title="Experience" className="card" titleId="experience">
+      <Panel iconFunction={Icons.Experience} title="Experience" className="card" titleId="experience">
         <p>
           <img src="./assets/images/LearningPath.png" alt="experience" />
         </p>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Firebase.
-import { features, firebaseApp } from "./../firebase/app";
+import { features, firebaseApp } from "../firebase/app";
 
 import "./app.scss";
 import "./../routes/routes.scss";

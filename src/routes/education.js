@@ -1,5 +1,6 @@
 import React from "react";
-import Panel from "../components/containers/panel";
+import Panel from "../ui/containers/panel";
+import { Icons } from "../ui/utils";
 
 const education = [
   {
@@ -39,7 +40,7 @@ const education = [
 
 export default function Educations(props) {
   return (
-    <Panel title="Education" className="card" titleId="education">
+    <Panel iconFunction={Icons.Education} title="Education" className="card" titleId="education">
       <p>
         <img src="./assets/images/edu.png" alt="education" />
       </p>

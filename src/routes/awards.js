@@ -1,9 +1,10 @@
 import React from "react";
-import Panel from "../components/containers/panel";
+import Panel from "../ui/containers/panel";
+import { Icons } from "../ui/utils";
 
 export default function Awards(props) {
   return (
-    <Panel title="Awards" className="card" titleId="awards">
+    <Panel iconFunction={Icons.Awards} title="Awards" className="card" titleId="awards">
       <p>
         <img src="./assets/images/awards.png" alt="about" />
       </p>
