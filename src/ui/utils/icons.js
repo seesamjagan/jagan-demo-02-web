@@ -11,7 +11,7 @@ export const Icons = {
     Default: () => <Icon icon="sticky-note" />,
     Close: () => <Icon icon="times-circle" />,
 
-    About: () => <Icon icon="user-o" />,
+    About: () => <Icon icon="user" />,
     Experience: () => <Icon icon="puzzle-piece" />,
     Projects: () => <Icon icon="cube" />,
     Education: () => <Icon icon="graduation-cap" />,
