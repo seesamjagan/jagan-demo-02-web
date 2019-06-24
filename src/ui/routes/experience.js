@@ -1,12 +1,12 @@
 import React from "react";
-import Panel from "../ui/containers/panel";
-import { db } from "../firebase/app";
 import { connect } from "react-redux";
-import { mapStateToProps, mapDispatchToProps } from "../store";
-import { updateExperienceAction } from "../store/reducers/experience";
-
+import { db } from "../../firebase/app";
+import { mapDispatchToProps, mapStateToProps } from "../../store";
+import { updateExperienceAction } from "../../store/reducers/experience";
+import Panel from "../containers/panel";
+import { Icons } from "../utils";
 import "./experience.scss";
-import { Icons } from "../ui/utils";
+
 
 export class ExperienceUI extends React.Component {
   state = {

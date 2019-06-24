@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-
 // Firebase.
 import { features, firebaseApp } from "../firebase/app";
-
-import "./app.scss";
-import "./../routes/routes.scss";
-
-import Educations from "../routes/education";
-import Projects from "../routes/projects";
-import Experience from "../routes/experience";
-import About from "../routes/about";
-import Header from "./layout/header";
-import Awards from "../routes/awards";
-import Footer from "./layout/footer";
 import { store } from "../store";
 import { authStateChangeAction } from "../store/reducers/auth";
+import "./app.scss";
+import Footer from "./layout/footer";
+import Header from "./layout/header";
+import About from "./routes/about";
+import Awards from "./routes/awards";
+import Educations from "./routes/education";
+import Experience from "./routes/experience";
+import Projects from "./routes/projects";
+import "./routes/routes.scss";
+
 
 export default class App extends Component {
 

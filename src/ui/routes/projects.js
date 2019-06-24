@@ -1,6 +1,6 @@
 import React from 'react'
-import Panel from '../ui/containers/panel';
-import { Icons } from '../ui/utils';
+import Panel from '../containers/panel';
+import { Icons } from '../utils';
 
 export default function Projects(props) {
     return (
