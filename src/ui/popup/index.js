@@ -41,7 +41,7 @@ export class VerifyEmailModal extends Component {
         >
           <p>
             Seems you have not yet verified your email. Do you like us to re-send
-            the verification email?{" "}
+            the verification email?
           </p>
           <div>
             <button onClick={this.onSend}>Send</button>

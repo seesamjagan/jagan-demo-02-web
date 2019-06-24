@@ -1,4 +1,5 @@
 import React from "react";
+
 export const Icon = ({ icon }) => <i className={"fa fa-" + icon} aria-hidden="true" />;
 
 export const Icons = {
@@ -18,3 +19,5 @@ export const Icons = {
 
     SendEmail: () => <Icon icon="paper-plane" />,
 }
+
+export default Icons;
