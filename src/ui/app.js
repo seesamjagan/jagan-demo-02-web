@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Firebase.
 import { features, firebaseApp } from "../firebase/app";
 import { store } from "../store";
@@ -57,45 +57,3 @@ export default (props) => {
     </div>
   );
 }
-
-/*
-  export class AppOld extends Component {
-
-    componentDidMount() {
-      this.unregisterAuthObserver = firebaseApp
-        .auth()
-        .onAuthStateChanged(user => {
-          console.log("onAuthStateChanged", {user})
-          store.dispatch(authStateChangeAction(user));
-        });
-
-        this.unSubscribeStoreChange = store.subscribe(this.onStoreChange);
-    }
-
-    onStoreChange = () => {
-      this.setState({});
-    }
-
-    componentWillUnmount() {
-      this.unregisterAuthObserver();
-      this.unSubscribeStoreChange();
-    }
-
-    render() {
-      const { auth } = store.getState();
-      return (
-        <div className="app">
-          <Header onLogin={this.onLoginClick} auth={auth} />
-          <section className="app-body">
-            <About />
-            <Experience />
-            <Projects />
-            <Educations />
-            <Awards />
-          </section>
-          <Footer features={features} />
-        </div>
-      );
-    }
-  }
-*/

@@ -7,7 +7,6 @@ import Panel from "../containers/panel";
 import { Icons } from "../utils";
 import "./experience.scss";
 
-
 export class ExperienceUI extends React.Component {
   state = {
     loading: false,
@@ -33,8 +32,22 @@ export class ExperienceUI extends React.Component {
           //console.log({ doc });
           data.push({ ...doc.data(), id: doc.id });
         });
-        console.log({ data: JSON.stringify(data) });
-        this.props.dispatch(updateExperienceAction(data));
+
+        let map = data.reduce((map, exp, index) => {
+          let org = map[exp.company] || {
+            path: [],
+            titleIndex: index,
+            company: exp.company
+          };
+          org.path.push(exp);
+
+          return { ...map, [exp.company]: org };
+        }, {});
+        let exp = Object.keys(map)
+          .map(key => map[key])
+          .sort((a, b) => a.titleIndex > b.titleIndex);
+        console.log({ data, map, exp });
+        this.props.dispatch(updateExperienceAction(exp));
       })
       .catch(reason => {
         this.setState({
@@ -56,7 +69,12 @@ export class ExperienceUI extends React.Component {
     } = this;
 
     return (
-      <Panel iconFunction={Icons.Experience} title="Experience" className="card" titleId="experience">
+      <Panel
+        iconFunction={Icons.Experience}
+        title="Experience"
+        className="card"
+        titleId="experience"
+      >
         <p>
           <img src="./assets/images/LearningPath.png" alt="experience" />
         </p>
@@ -66,7 +84,7 @@ export class ExperienceUI extends React.Component {
           <div>
             {data &&
               data.map((exp, i) => {
-                return <Exp data={exp} key={i} />;
+                return <OrgExp data={exp} key={i} />;
               })}
           </div>
         )}
@@ -75,21 +93,31 @@ export class ExperienceUI extends React.Component {
   }
 }
 
-const Exp = ({ data }) => (
+const OrgExp = ({ data: { company, path } }) => (
   <div className="experience">
-    <h3>{data.company}</h3>
-    <h2>{data.title}</h2>
-    <div>
-      <span>From: </span> <FSDate data={data.start} />
-      <span> To: </span>{" "}
-      {data.current ? <span>Current</span> : <FSDate data={data.end} />}
-    </div>
-    <div>
-      <span>Location: </span>
-      <span>{data.location}</span>
-    </div>
+    <h3>{company}</h3>
+    {
+      path.map(path=><ExpPath data={path} key={path.title} /> )
+    }
   </div>
 );
+
+const ExpPath = ({data}) => {
+  return (
+    <div className="title">
+      <h2>{data.title}</h2>
+      <div className="info">
+        <span>From: </span> <FSDate data={data.start} />
+        <span> To: </span>{" "}
+        {data.current ? <span>Current</span> : <FSDate data={data.end} />}
+      </div>
+      <div className="info">
+        <span>Location: </span>
+        <span>{data.location}</span>
+      </div>
+    </div>
+  );
+};
 
 const FSDate = ({ data }) => {
   let d = new Date(data.seconds * 1000);
