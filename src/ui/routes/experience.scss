@@ -9,7 +9,12 @@
     align-self: stretch;
     .title{
         padding-left: 10px;
-        h2::before{
+        margin: 0;
+        text-align: left;
+        h3{
+            font-size: medium;
+        }
+        h3::before{
             content: "⚒ ";
             margin-left: -8px;
             font-weight: 900;

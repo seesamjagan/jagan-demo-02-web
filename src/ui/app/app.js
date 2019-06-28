@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 // Firebase.
-import { features, firebaseApp } from "../firebase/app";
-import { store } from "../store";
-import { authStateChangeAction } from "../store/reducers/auth";
+import { features, firebaseApp } from "../../firebase/app";
+import { store } from "../../store";
+import { authStateChangeAction } from "../../store/reducers/auth";
 import "./app.scss";
-import Footer from "./layout/footer";
-import Header from "./layout/header";
-import About from "./routes/about";
-import Awards from "./routes/awards";
-import Educations from "./routes/education";
-import Experience from "./routes/experience";
-import Projects from "./routes/projects";
+import Footer from "../layout/footer";
+import Header from "../layout/header";
+import About from "../routes/about";
+import Awards from "../routes/awards";
+import Educations from "../routes/education";
+import Experience from "../routes/experience";
+import Projects from "../routes/projects";
 import "./routes/routes.scss";
 
-export default (props) => {
+export const App = (props) => {
 
   const [auth, setAuth] = useState(null);
 

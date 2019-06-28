@@ -67,7 +67,23 @@ export class ExperienceUI extends React.Component {
         experience: { data }
       }
     } = this;
-
+    
+    return (
+      <>
+        <h1><Icons.Experience /> Experience</h1>
+        {loading ? (
+          <div>Loading... </div>
+        ) : (
+          <div>
+            {data &&
+              data.map((exp, i) => {
+                return <OrgExp data={exp} key={i} />;
+              })}
+          </div>
+        )}
+      </>
+    );
+/* 
     return (
       <Panel
         iconFunction={Icons.Experience}
@@ -89,7 +105,7 @@ export class ExperienceUI extends React.Component {
           </div>
         )}
       </Panel>
-    );
+    ); */
   }
 }
 
@@ -105,7 +121,7 @@ const OrgExp = ({ data: { company, path } }) => (
 const ExpPath = ({data}) => {
   return (
     <div className="title">
-      <h2>{data.title}</h2>
+      <h3>{data.title}</h3>
       <div className="info">
         <span>From: </span> <FSDate data={data.start} />
         <span> To: </span>{" "}

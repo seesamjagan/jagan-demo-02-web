@@ -16,6 +16,7 @@ export const Icons = {
     Projects: () => <Icon icon="cube" />,
     Education: () => <Icon icon="graduation-cap" />,
     Awards: () => <Icon icon="certificate" />,
+    Portfolio: () => <Icon icon="paint-brush" />,
 
     SendEmail: () => <Icon icon="paper-plane" />,
 }

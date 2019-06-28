@@ -40,6 +40,18 @@ const education = [
 
 export default function Educations(props) {
   return (
+    <>
+      <h1><Icons.Education /> Education</h1>
+      {education.map(edu => (
+        <Education data={edu} key={edu.degree} />
+      ))}
+    </>
+  );
+}
+
+/* 
+export default function Educations(props) {
+  return (
     <Panel iconFunction={Icons.Education} title="Education" className="card" titleId="education">
       <p>
         <img src="./assets/images/edu.png" alt="education" />
@@ -50,7 +62,7 @@ export default function Educations(props) {
     </Panel>
   );
 }
-
+ */
 const Education = ({
   data: {
     school,
