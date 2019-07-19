@@ -47,19 +47,19 @@ const Header = () => (
 const SocialMedia = () => (
   <section className="social-media">
     -
-    <a href="https://linkedin.com/in/seesamjagan/" className="icon">
+    <a href="https://linkedin.com/in/seesamjagan/" className="icon" target="linkedin">
       <Icon icon="linkedin" />
     </a>
     -
-    <a href="https://github.com/seesamjagan" className="icon">
+    <a href="https://github.com/seesamjagan" className="icon" target="github">
       <Icon icon="github" />
     </a>
     -
-    <a href="https://twitter.com/seesamjagan" className="icon">
+    <a href="https://twitter.com/seesamjagan" className="icon" target="twitter">
       <Icon icon="twitter" />
     </a>
     -
-    <a href="https://facebook.com/seesamjagan" className="icon">
+    <a href="https://facebook.com/seesamjagan" className="icon" target="facebook">
       <Icon icon="facebook" />
     </a>
     -
@@ -212,10 +212,12 @@ export const Clock = () => {
     "🕙",
     "🕚"
   ];
+  let [h, m, s] = [d.getHours(), d.getMinutes(), d.getSeconds()];
+  let o = h >= 12 ? "pm" : "am";
   return (
-    <span className="clock">
-      {t[d.getHours() % 12]} : {t[d.getMinutes() % 12]} :{" "}
-      {t[d.getSeconds() % 12]}
+    <span className="clock" title={`${h%12} : ${m} : ${s} ${o}`}>
+      {t[h % 12]} : {t[m % 12]} :{" "}
+      {t[s % 12]} {h < 12 ? "🌞" : "🌚"}
     </span>
   );
 };
