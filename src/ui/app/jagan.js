@@ -12,15 +12,15 @@ import Portfolio from "../routes/portfolio";
 const NavBar = () => (
   <div className="nav-bar">
     <Link to="/" exact>
-      <div>👦</div>
+      <span role="img" aria-label="about">👦</span>
       <div>About</div>
     </Link>
     <Link to="/experience">
-      <div>👷🏻</div>
+      <span role="img" aria-label="experience">👷🏻</span>
       <div>Experience</div>
     </Link>
     <Link to="/education">
-      <div>👨🏽‍🎓</div>
+      <span role="img" aria-label="education">👨🏽‍🎓</span>
       <div>Education</div>
     </Link>
     {/*
@@ -47,7 +47,11 @@ const Header = () => (
 const SocialMedia = () => (
   <section className="social-media">
     -
-    <a href="https://linkedin.com/in/seesamjagan/" className="icon" target="linkedin">
+    <a
+      href="https://linkedin.com/in/seesamjagan/"
+      className="icon"
+      target="linkedin"
+    >
       <Icon icon="linkedin" />
     </a>
     -
@@ -59,7 +63,11 @@ const SocialMedia = () => (
       <Icon icon="twitter" />
     </a>
     -
-    <a href="https://facebook.com/seesamjagan" className="icon" target="facebook">
+    <a
+      href="https://facebook.com/seesamjagan"
+      className="icon"
+      target="facebook"
+    >
       <Icon icon="facebook" />
     </a>
     -
@@ -126,12 +134,7 @@ export class PageBaner extends Component {
     let width = Number(this.props.width) || 450;
     let height = Number(this.props.height) || 200;
     let offsetY = 3;
-    let d1 = `M 0 ${offsetY} 
-      L ${width} ${offsetY} 
-      L ${width} ${height * 0.66 + offsetY} 
-      L ${width / 2} ${height + offsetY} 
-      L 0 ${height * 0.66 + offsetY} z`;
-
+    
     let d2 = `M 0 0 
       L ${width} 0 
       L ${width} ${height * 0.66}
@@ -144,8 +147,8 @@ export class PageBaner extends Component {
     return (
       <svg
         className="my-svg"
-        viewBox={`0 0 ${width} ${height+120}px`}
-        style={{height: `${height+CS/2}px`, width: `${width}px`}}
+        viewBox={`0 0 ${width} ${height + 120}px`}
+        style={{ height: `${height + CS / 2}px`, width: `${width}px` }}
       >
         <defs>
           <filter id="f1" x="0" y="0" width="120%" height="120%">
@@ -215,9 +218,22 @@ export const Clock = () => {
   let [h, m, s] = [d.getHours(), d.getMinutes(), d.getSeconds()];
   let o = h >= 12 ? "pm" : "am";
   return (
-    <span className="clock" title={`${h%12} : ${m} : ${s} ${o}`}>
-      {t[h % 12]} : {t[m % 12]} :{" "}
-      {t[s % 12]} {h < 12 ? "🌞" : "🌚"}
+    <span className="clock" title={`${h % 12} : ${m} : ${s} ${o}`}>
+      <span role="img" aria-label="hour">
+        {t[h % 12]}
+      </span>
+      <span> : </span>
+      <span role="img" aria-label="minute">
+        {t[Math.round(m / 5)]}
+      </span>
+      <span> : </span>
+      <span role="img" aria-label="seconds">
+        {t[s % 12]}
+      </span>
+      <span>&nbsp;</span>
+      <span role="img" aria-label="day">
+        {h < 12 ? "🌞" : "🌚"}
+      </span>
     </span>
   );
 };

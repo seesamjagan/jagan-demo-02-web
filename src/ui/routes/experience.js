@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { db } from "../../firebase/app";
 import { mapDispatchToProps, mapStateToProps } from "../../store";
 import { updateExperienceAction } from "../../store/reducers/experience";
-import Panel from "../containers/panel";
 import { Icons } from "../utils";
 import "./experience.scss";
 
