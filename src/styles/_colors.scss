@@ -1,5 +1,9 @@
-$PRIMARY_COLOR: #039BE5;
-$SECONDARY_COLOR: #FFA100;
+$PRIMARY_COLOR: #039be5;
+$SECONDARY_COLOR: #ffa100;
 
+$PRIMARY_BG_COLOR: #eceff1;
 
-$PRIMARY_BG_COLOR: #eceff1
+$BOX_SHADOW_INSET: 0 0 8px 4px inset rgba(25, 25, 25, 0.5),
+  0 0 4px 2px rgba(202, 201, 201, 0.5);
+
+  $BOX_SHADOW: 0 0 4px 2px rgba(0, 0, 0, 0.5);

@@ -1,3 +1,4 @@
+@import "colors";
 body,
 html,
 #demo {
@@ -34,8 +35,7 @@ html,
       width: 96px;
       height: 96px;
       border-radius: 64px;
-      box-shadow: 0 0 8px 4px inset rgba(25, 25, 25, 0.5),
-        0 0 4px 2px rgba(0, 0, 0, 0.5);
+      box-shadow: $BOX_SHADOW_INSET;
       margin: 10px 0;
       color: #fff;
       padding-top: 20px;
@@ -44,20 +44,18 @@ html,
       font-size: small;
     }
     a:hover {
-      box-shadow: 0 0 8px 4px inset rgba(25, 25, 25, 0.5),
-        0 0 4px 2px rgba(202, 201, 201, 0.5);
+      box-shadow: $BOX_SHADOW_INSET;
       background-color: rgba(202, 201, 201, 0.25);
     }
     a.active {
-      box-shadow: 0 0 8px 4px inset rgba(25, 25, 25, 0.5),
-        0 0 4px 2px rgba(202, 201, 201, 0.5);
+      box-shadow: $BOX_SHADOW_INSET;
       background-color: rgba(202, 201, 201, 0.5);
     }
   }
   .main {
     display: grid;
     border-radius: 4px;
-    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: $BOX_SHADOW;
     border-top: solid 8px #036;
     min-height: 660px;
     .title {
@@ -121,7 +119,7 @@ html,
       font-size: large;
       padding: 4px;
       border-radius: 4px;
-      box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.5);
+      box-shadow: $BOX_SHADOW;
       justify-self: center;
       cursor: pointer;
     }

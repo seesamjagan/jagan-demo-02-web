@@ -36,7 +36,7 @@ const NavBar = () => (
   </div>
 );
 
-const subTitles = ["SCM", "UI Architect", "Freelance"];
+const subTitles = ["SCM", "UI Architect", "Trainer", "Freelance"];
 const Header = () => (
   <Fragment>
     <header className="title">Jagan Langa</header>
@@ -91,8 +91,8 @@ const Quote = () => {
 
 const Footer = () => (
   <footer className="footer">
-    Copyrights &copy; All Rights Reserved. {new Date().getFullYear()} Jagan
-    Langa .
+    Copyrights &copy; {new Date().getFullYear()} Jagan
+    Langa. All Rights Reserved.
   </footer>
 );
 const Main = () => (
