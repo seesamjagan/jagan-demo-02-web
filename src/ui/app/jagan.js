@@ -78,12 +78,12 @@ const Quote = () => {
   return (
     <article className="quote">
       <p>
-        A passionate software engineer who have <code>12+</code> years of
+        A passionate software engineer who have <code>{new Date().getFullYear()-2007}+</code> years of
         experience in <code>UI architecture</code>, <code>UI development</code>{" "}
-        & bug fixing for medium to large scale enterprise level web application
+        & bug fixing for medium to large scale enterprise level web and desktop application
         which spans across multiple domains such as <code>storage</code>,{" "}
         <code>networking</code>, <code>engineering</code>, <code>finance</code>,{" "}
-        <code>multimedia</code>, <code>LMS and LCMS</code>
+        <code>multimedia</code>, <code>LMS</code> and <code>LCMS</code>
       </p>
     </article>
   );
@@ -91,7 +91,7 @@ const Quote = () => {
 
 const Footer = () => (
   <footer className="footer">
-    Copyrights &copy; {new Date().getFullYear()} Jagan
+    &copy; {new Date().getFullYear()} Jagan
     Langa. All Rights Reserved.
   </footer>
 );
@@ -147,8 +147,8 @@ export class PageBaner extends Component {
     return (
       <svg
         className="my-svg"
-        viewBox={`0 0 ${width} ${height + 120}px`}
-        style={{ height: `${height + CS / 2}px`, width: `${width}px` }}
+        viewBox={`0 0 ${width} ${height + 120}`}
+        width="100%"
       >
         <defs>
           <filter id="f1" x="0" y="0" width="120%" height="120%">

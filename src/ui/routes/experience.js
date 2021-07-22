@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { db } from "../../firebase/app";
 import { mapDispatchToProps, mapStateToProps } from "../../store";
@@ -9,7 +9,7 @@ import "./experience.scss";
 export class ExperienceUI extends React.Component {
   state = {
     loading: false,
-    error: null
+    error: null,
   };
 
   componentDidMount() {
@@ -24,10 +24,10 @@ export class ExperienceUI extends React.Component {
     db.collection("experience")
       .orderBy("start", "desc")
       .get()
-      .then(querySnapshot => {
+      .then((querySnapshot) => {
         //console.log({ querySnapshot });
         let data = [];
-        querySnapshot.forEach(doc => {
+        querySnapshot.forEach((doc) => {
           //console.log({ doc });
           data.push({ ...doc.data(), id: doc.id });
         });
@@ -36,26 +36,26 @@ export class ExperienceUI extends React.Component {
           let org = map[exp.company] || {
             path: [],
             titleIndex: index,
-            company: exp.company
+            company: exp.company,
           };
           org.path.push(exp);
 
           return { ...map, [exp.company]: org };
         }, {});
         let exp = Object.keys(map)
-          .map(key => map[key])
+          .map((key) => map[key])
           .sort((a, b) => a.titleIndex > b.titleIndex);
         console.log({ data, map, exp });
         this.props.dispatch(updateExperienceAction(exp));
       })
-      .catch(reason => {
+      .catch((reason) => {
         this.setState({
-          error: reason
+          error: reason,
         });
       })
       .finally(() => {
         this.setState({
-          loading: false
+          loading: false,
         });
       });
   };
@@ -63,61 +63,42 @@ export class ExperienceUI extends React.Component {
     const {
       state: { loading },
       props: {
-        experience: { data }
-      }
+        experience: { data },
+      },
     } = this;
-    
+
     return (
-      <>
-        <h1><Icons.Experience /> Experience</h1>
+      <Fragment>
+        <header className="header">
+          <h1 className="title">
+            <Icons.Experience /> Experience
+          </h1>
+        </header>
         {loading ? (
           <div>Loading... </div>
         ) : (
-          <div>
+          <div className="content">
             {data &&
               data.map((exp, i) => {
                 return <OrgExp data={exp} key={i} />;
               })}
           </div>
         )}
-      </>
+      </Fragment>
     );
-/* 
-    return (
-      <Panel
-        iconFunction={Icons.Experience}
-        title="Experience"
-        className="card"
-        titleId="experience"
-      >
-        <p>
-          <img src="./assets/images/LearningPath.png" alt="experience" />
-        </p>
-        {loading ? (
-          <div>Loading... </div>
-        ) : (
-          <div>
-            {data &&
-              data.map((exp, i) => {
-                return <OrgExp data={exp} key={i} />;
-              })}
-          </div>
-        )}
-      </Panel>
-    ); */
   }
 }
 
 const OrgExp = ({ data: { company, path } }) => (
   <div className="experience">
     <h3>{company}</h3>
-    {
-      path.map(path=><ExpPath data={path} key={path.title} /> )
-    }
+    {path.map((path) => (
+      <ExpPath data={path} key={path.title} />
+    ))}
   </div>
 );
 
-const ExpPath = ({data}) => {
+const ExpPath = ({ data }) => {
   return (
     <div className="title">
       <h3>{data.title}</h3>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Icons } from "../utils";
 
 const education = [
@@ -9,9 +9,9 @@ const education = [
     start: 2004,
     end: 2007,
     grade: "80",
-    activities: [],
+    activities: ["Department Events Community Member"],
     description: "Master Of Computer Application (MCA)",
-    place: "Kumbakonam"
+    place: "Kumbakonam",
   },
   {
     school: "St. Josephs College of Science And Arts",
@@ -22,7 +22,7 @@ const education = [
     grade: "68",
     activities: ["College Volleyball Team Player"],
     description: "B.Sc. Computer Science",
-    place: "Cuddalore"
+    place: "Cuddalore",
   },
   {
     school: "Fathima Matric Hr. Sec School",
@@ -33,18 +33,24 @@ const education = [
     grade: "52",
     activities: ["School Volleyball Team Player"],
     description: "HSC in Mathematics and Computer Science",
-    place: "Vriddhachalam"
-  }
+    place: "Vriddhachalam",
+  },
 ];
 
 export default function Educations(props) {
   return (
-    <>
-      <h1><Icons.Education /> Education</h1>
-      {education.map(edu => (
-        <Education data={edu} key={edu.degree} />
-      ))}
-    </>
+    <Fragment>
+      <header className="header">
+        <h1 className="title">
+          <Icons.Education /> Education
+        </h1>
+      </header>
+      <div className="content">
+        {education.map((edu) => (
+          <Education data={edu} key={edu.degree} />
+        ))}
+      </div>
+    </Fragment>
   );
 }
 
@@ -71,8 +77,8 @@ const Education = ({
     end,
     place,
     activities = [],
-    description
-  }
+    description,
+  },
 }) => {
   return (
     <div className="experience">
